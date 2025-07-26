@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupplySathi - Your Trusted Sourcing Partner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://i.postimg.cc/0jX5tLbd/Chat-GPT-Image-Jul-26-2025-01-44-52-PM.png" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-handshake"></i>
+                <span>SupplySathi</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#about" class="nav-link">About</a>
+                <button class="btn-primary" onclick="showLoginModal()">Login</button>
+                <button class="btn-secondary" onclick="showSignupModal()">Sign Up</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Connect. Source. Grow.</h1>
+            <p>Empowering street food vendors with trusted suppliers and transparent pricing</p>
+            <div class="hero-buttons">
+                <button class="btn-primary btn-large" onclick="showSignupModal('vendor')">
+                    <i class="fas fa-store"></i>
+                    I'm a Vendor
+                </button>
+                <button class="btn-secondary btn-large" onclick="showSignupModal('supplier')">
+                    <i class="fas fa-truck"></i>
+                    I'm a Supplier
+                </button>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose SupplySathi?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Verified Suppliers</h3>
+                    <p>All suppliers are verified with FSSAI licenses and GSTIN for your trust and safety</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location-Based</h3>
+                    <p>Find suppliers near you with real-time location tracking and delivery estimates</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Price Comparison</h3>
+                    <p>Compare prices across multiple suppliers and get the best deals for your business</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Rating System</h3>
+                    <p>Transparent rating and review system to help you choose reliable suppliers</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-receipt"></i>
+                    <h3>Digital Bills</h3>
+                    <p>Get digital receipts for all transactions and track your expenses easily</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Recurring Orders</h3>
+                    <p>Set up recurring orders for your regular needs and never run out of supplies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Transforming Street Food Supply Chain</h2>
+                    <p>SupplySathi bridges the gap between street food vendors and reliable suppliers, creating a digital ecosystem that promotes trust, transparency, and growth in India's vibrant street food economy.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Reduce procurement time by 70%</li>
+                        <li><i class="fas fa-check"></i> Save up to 20% on raw material costs</li>
+                        <li><i class="fas fa-check"></i> Access to 500+ verified suppliers</li>
+                        <li><i class="fas fa-check"></i> Digital payment and billing system</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="/images/vegetables-market.png" alt="Street Food Market" onerror="this.src='/placeholder.svg?height=300&width=400'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Login to SupplySathi</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="userType">I am a:</label>
+                    <select id="userType" required>
+                        <option value="">Select user type</option>
+                        <option value="vendor">Vendor</option>
+                        <option value="supplier">Supplier</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="closeModal('loginModal'); showSignupModal()">Sign up here</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            <h2>Join SupplySathi</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone">Phone Number</label>
+                    <input type="tel" id="signupPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupUserType">I am a:</label>
+                    <select id="signupUserType" required>
+                        <option value="">Select user type</option>
+                        <option value="vendor">Vendor (Buyer)</option>
+                        <option value="supplier">Supplier (Seller)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="signupLocation">Location</label>
+                    <input type="text" id="signupLocation" placeholder="Enter your city" required>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Create Account</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="closeModal('signupModal'); showLoginModal()">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-handshake"></i>
+                        <span>SupplySathi</span>
+                    </div>
+                    <p>Connecting street food vendors with trusted suppliers across India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> captain-sou@error404.in</p>
+                    <p><i class="fas fa-phone"></i> +91 74XXX XXX65 </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SupplySathi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

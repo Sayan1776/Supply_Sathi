@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard - SupplySathi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-handshake"></i>
+                    <span>SupplySathi</span>
+                </div>
+                <div class="nav-menu">
+                    <span id="welcomeMessage">Welcome, Vendor!</span>
+                    <button class="btn-secondary" onclick="showProfileModal()">
+                        <i class="fas fa-user-circle"></i> My Profile
+                    </button>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="dashboard-nav">
+                    <h1 class="dashboard-title">
+                        <i class="fas fa-store"></i>
+                        Vendor Dashboard
+                    </h1>
+                    <div class="dashboard-actions">
+                        <button class="btn-primary" onclick="showNearbySuppliers()">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Find Suppliers
+                        </button>
+                        <button class="btn-secondary" onclick="showOrderHistory()">
+                            <i class="fas fa-history"></i>
+                            Order History
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3 id="totalOrders">12</h3>
+                        <p>Total Orders</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-rupee-sign"></i>
+                        <h3 id="totalSpent">₹15,240</h3>
+                        <p>Total Spent</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-truck"></i>
+                        <h3 id="activeSuppliers">8</h3>
+                        <p>Active Suppliers</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <h3 id="avgRating">4.6</h3>
+                        <p>Avg Rating Given</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Nearby Suppliers -->
+                <div class="dashboard-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Nearby Suppliers
+                    </h2>
+                    <div id="suppliersList" class="suppliers-list">
+                        <!-- Suppliers will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Available Products -->
+                <div class="dashboard-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-boxes"></i>
+                        Available Products
+                    </h2>
+                    <div class="search-bar">
+                        <input type="text" id="productSearch" placeholder="Search products..." onkeyup="filterProducts()">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div id="productsList" class="products-list">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="dashboard-section" style="margin-top: 30px;">
+                <h2 class="section-title">
+                    <i class="fas fa-clock"></i>
+                    Recent Orders
+                </h2>
+                <div id="recentOrders" class="orders-list">
+                    <!-- Recent orders will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('orderModal')">&times;</span>
+            <h2>Place Order</h2>
+            <div id="orderDetails">
+                <!-- Order details will be populated here -->
+            </div>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryDate">Preferred Delivery Date</label>
+                    <input type="date" id="deliveryDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Special Instructions (Optional)</label>
+                    <textarea id="notes" rows="3" placeholder="Any special requirements..."></textarea>
+                </div>
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Charges:</span>
+                        <span id="deliveryCharges">₹50</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="totalAmount">₹50</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Supplier Details Modal -->
+    <div id="supplierModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('supplierModal')">&times;</span>
+            <div id="supplierDetails">
+                <!-- Supplier details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('profileModal')">&times;</span>
+            <h2>My Profile</h2>
+            <div id="profileContent">
+                <!-- Profile details will be displayed here -->
+            </div>
+            <div id="editProfileForm" style="display: none;">
+                <form id="updateProfileForm" onsubmit="updateProfile(event)">
+                    <div class="form-group">
+                        <label for="profileName">Name</label>
+                        <input type="text" id="profileName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileEmail">Email</label>
+                        <input type="email" id="profileEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profilePhone">Phone</label>
+                        <input type="tel" id="profilePhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileLocation">Location</label>
+                        <input type="text" id="profileLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileBusinessName">Business Name</label>
+                        <input type="text" id="profileBusinessName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileBusinessAddress">Business Address</label>
+                        <textarea id="profileBusinessAddress" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileBusinessType">Business Type</label>
+                        <select id="profileBusinessType" required>
+                            <option value="restaurant">Restaurant</option>
+                            <option value="street_food">Street Food Stall</option>
+                            <option value="cafe">Cafe</option>
+                            <option value="food_truck">Food Truck</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="vendor-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Dashboard - SupplySathi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-handshake"></i>
+                <span>SupplySathi</span>
+            </div>
+            <div class="nav-menu">
+                <span id="welcomeMessage">Welcome, Supplier!</span>
+                <button class="btn-secondary" onclick="showProfileModal()">
+                    <i class="fas fa-user-circle"></i> My Profile
+                </button>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="dashboard-nav">
+                    <h1 class="dashboard-title">
+                        <i class="fas fa-truck"></i>
+                        Supplier Dashboard
+                    </h1>
+                    <div class="dashboard-actions">
+                        <button class="btn-primary" onclick="showAddProductModal()">
+                            <i class="fas fa-plus"></i>
+                            Add Product
+                        </button>
+                        
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3 id="totalProducts">8</h3>
+                        <p>Total Products</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h3 id="pendingOrders">5</h3>
+                        <p>Pending Orders</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-rupee-sign"></i>
+                        <h3 id="monthlyRevenue">₹45,680</h3>
+                        <p>Monthly Revenue</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <h3 id="avgRating">4.7</h3>
+                        <p>Average Rating</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Incoming Orders -->
+                <div class="dashboard-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-bell"></i>
+                        Incoming Orders
+                    </h2>
+                    <div id="incomingOrders" class="orders-list">
+                        <!-- Incoming orders will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- My Products -->
+                <div class="dashboard-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-box-open"></i>
+                        My Products
+                    </h2>
+                    <div id="myProducts" class="products-grid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Sales -->
+            <div class="dashboard-section" style="margin-top: 30px;">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    Recent Sales
+                </h2>
+                <div id="recentSales" class="sales-list">
+                    <!-- Recent sales will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addProductModal')">&times;</span>
+            <h2>Add New Product</h2>
+            <form id="addProductForm">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Category</label>
+                    <select id="productCategory" required>
+                        <option value="">Select category</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="spices">Spices</option>
+                        <option value="grains">Grains & Cereals</option>
+                        <option value="oils">Oils & Fats</option>
+                        <option value="dairy">Dairy Products</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price per Unit (₹)</label>
+                    <input type="number" id="productPrice" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="productUnit">Unit</label>
+                    <select id="productUnit" required>
+                        <option value="">Select unit</option>
+                        <option value="kg">Kilogram (kg)</option>
+                        <option value="liter">Liter</option>
+                        <option value="piece">Piece</option>
+                        <option value="dozen">Dozen</option>
+                        <option value="packet">Packet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productStock">Available Stock</label>
+                    <input type="number" id="productStock" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" rows="3" placeholder="Product description..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="orderDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('orderDetailsModal')">&times;</span>
+            <h2>Order Details</h2>
+            <div id="orderDetailsContent">
+                <!-- Order details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="productDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('productDetailsModal')">&times;</span>
+            <div id="productDetailsContent">
+                <!-- Product details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('profileModal')">&times;</span>
+            <h2>My Profile</h2>
+            <div id="profileContent">
+                <!-- Profile details will be displayed here -->
+            </div>
+            <div id="editProfileForm" style="display: none;">
+                <form id="updateProfileForm" onsubmit="updateProfile(event)">
+                    <div class="form-group">
+                        <label for="profileName">Name</label>
+                        <input type="text" id="profileName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileEmail">Email</label>
+                        <input type="email" id="profileEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profilePhone">Phone</label>
+                        <input type="tel" id="profilePhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileLocation">Location</label>
+                        <input type="text" id="profileLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileBusinessName">Business Name</label>
+                        <input type="text" id="profileBusinessName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileFssai">FSSAI License Number</label>
+                        <input type="text" id="profileFssai">
+                    </div>
+                    <div class="form-group">
+                        <label for="profileEstablished">Established Year</label>
+                        <input type="number" id="profileEstablished" min="1900" max="2023">
+                    </div>
+                    <div class="form-group">
+                        <label for="profileDescription">Business Description</label>
+                        <textarea id="profileDescription" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="supplier-dashboard.js"></script>
+</body>
+</html>

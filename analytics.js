@@ -28,6 +28,6 @@ const Analytics = {
 // Example usage (to be called from dashboard scripts):
 // Analytics.trackDashboardView('vendor')
 // Analytics.trackOrderPlaced({ amount: 500, items: 3 })
-// Analytics.trackProfileUpdate({ name: 'John Doe' })
+// Analytics.trackProfileUpdate({ name: 'User Name' })
 
 export default Analytics;

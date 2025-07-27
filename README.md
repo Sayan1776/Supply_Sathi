@@ -1,30 +1,23 @@
-# Street food vendor solution
+Hello, we are team Error 404, academically from Gargi Memorial Institute  of Technology in Kolkata.
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+After analyzing the problem, we developed SupplySathi which is a web-based platform designed to help streetfood vendors in India easily connect with trusted raw materials supplier.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/soumenpore7777-gmailcoms-projects/v0-street-food-vendor-solution)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/5R8swnWSven)
+Our goal is to solve problems like unpredictable pricing, inconsistent quality, and lack of supplier  trancparency. Vendors can use SupplySathi   to browse verified suppliers, compare prices openly and place easily.
 
-## Overview
+User can login using the buttons of header and also can sign up using the buttons of hero section.
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
 
-## Deployment
+Whenever a vendor is our user, they can easily find suppliers by  clicking on “Find Supplier” button and by scrolling manually. There is a same process for viewing order history.
+They can browse available products by scrolling. After clicking on “Order now” , they can see the details and of product even they can directly contact supplier through WhatsApp.  They can select quantity of products and delivery date by themselves. After placing order, they will be redirected to payment they can choose any one for payment.
 
-Your project is live at:
+Logout
 
-**[https://vercel.com/soumenpore7777-gmailcoms-projects/v0-street-food-vendor-solution](https://vercel.com/soumenpore7777-gmailcoms-projects/v0-street-food-vendor-solution)**
+Whenever a supplier is will login our webapp, they can add products by simply clicking “Add products”
+By scrolling my product section, they can also edit by themselves. Simply they can edit stocks of product. They can see their  incoming orders. After accepting the order, a confirmation message will be send to vendor through whatsapp.
 
-## Build your app
+This  is our whole solution we did and yes! This is a mobile friendly website for users.
 
-Continue building your app on:
+Thank You from our whole team.
 
-**[https://v0.dev/chat/projects/5R8swnWSven](https://v0.dev/chat/projects/5R8swnWSven)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+GitHub Repo. Link : https://github.com/Soumen-dev-ux/Supply-Sathi
+Deployed Link : https://supply-sathi.netlify.app/

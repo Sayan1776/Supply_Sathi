@@ -21,3 +21,10 @@ Thank You from our whole team.
 
 GitHub Repo. Link : https://github.com/Soumen-dev-ux/Supply-Sathi
 Deployed Link : https://supply-sathi.netlify.app/
+
+Team Info
+
+Core Developer : Soumen Pore [TL]
+Presentator : Sania Islam
+Other Contributors : Sayan Paul , Ankan Mukherjee 
+Other Team Members : Arpita Halder

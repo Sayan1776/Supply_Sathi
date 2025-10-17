@@ -19,7 +19,7 @@ This  is our whole solution we did and yes! This is a mobile friendly website fo
 
 Thank You from our whole team.
 
-GitHub Repo. Link : https://github.com/Soumen-dev-ux/Supply-Sathi
+GitHub Repo. Link : (https://github.com/Sayan1776/Supply_Sathi)
 Deployed Link : https://supply-sathi.netlify.app/
 
 Team Info
